@@ -5,6 +5,6 @@ public interface Worker {
     void SetLastName(String lastName);
     void SetSalary(double salary);
     void Promotion(int promotion);
-    String PrintName();
-    String PrintSalary();
+    String toString();
+    String printSalary();
 }

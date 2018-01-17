@@ -1,12 +1,11 @@
 package Controllers;
 
+import Stages.EditStage;
 import Stages.HireStage;
 import Stages.LoginStage;
-import Worker.Employee;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,8 +13,8 @@ import java.io.IOException;
 public class MainWindowController {
     @FXML private Button logoutButton;
     @FXML private Button hireButton;
+    @FXML private Button editButton;
     @FXML private Label nameLabel;
-    @FXML private ListView<Employee> employeeList; // Need a static
 
     private Stage stage;
 
@@ -32,5 +31,11 @@ public class MainWindowController {
         stage = (Stage) hireButton.getScene().getWindow();
 
         new HireStage();
+    }
+
+    public void edit() throws IOException {
+        stage = (Stage) editButton.getScene().getWindow();
+
+        new EditStage();
     }
 }

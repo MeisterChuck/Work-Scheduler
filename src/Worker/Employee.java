@@ -4,16 +4,16 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Employee implements Worker {
-    protected String firstName;
-    protected String lastName;
-    protected double salary = 0.00;
+    private String firstName;
+    private String lastName;
+    private double salary = 0.00;
 
     Employee() {
         firstName = "New";
         lastName = "Hire";
     }
 
-    Employee(String firstName, String lastName, double salary) {
+    public Employee(String firstName, String lastName, double salary) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = salary;
@@ -40,12 +40,12 @@ public class Employee implements Worker {
     }
 
     @Override
-    public String PrintName() {
-        return this.lastName + ", " + this.firstName;
+    public String toString() {
+        return this.lastName + ", " + this.firstName + " works for " + printSalary();
     }
 
     @Override
-    public String PrintSalary() {
+    public String printSalary() {
         Locale locale = new Locale("en", "US");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         return currencyFormatter.format(salary);

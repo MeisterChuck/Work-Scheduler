@@ -20,7 +20,7 @@
           <RowConstraints maxHeight="196.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="100.0" text="Hire" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <Button fx:id="hireButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#hire" prefHeight="27.0" prefWidth="100.0" text="Hire" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -32,12 +32,17 @@
             </Button>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <TextField promptText="Enter First Name">
+                  <TextField fx:id="firstNameTextField" promptText="Enter First Name">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Enter Last Name">
+                  <TextField fx:id="lastNameTextField" promptText="Enter Last Name">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="salaryTextField" promptText="Enter Salary">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>

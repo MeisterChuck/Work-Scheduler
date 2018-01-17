@@ -1,5 +1,6 @@
 package Stages;
 
+import Data.EmployeeList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import java.io.IOException;
 
 public class MainStage extends Stage{
     private Parent root;
+    private static EmployeeList employeeList;
+
 
     public MainStage() throws IOException {
         root = FXMLLoader.load(getClass().getResource("/Windows/MainWindow.fxml"));

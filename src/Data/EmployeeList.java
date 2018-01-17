@@ -1,4 +1,6 @@
-package Worker;
+package Data;
+
+import Worker.Worker;
 
 import java.util.ArrayList;
 
