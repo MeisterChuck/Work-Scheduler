@@ -24,7 +24,7 @@ public class LoginWindowController {
             stage.close();
 
             // Opens new Main Program Stage
-            new MainStage();
+            new MainStage("/Windows/MainWindow.fxml", "Scheduler");
         } else {
             wrongCredentials.setText("Wrong Credentials");
         }

@@ -7,17 +7,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class EditStage extends Stage{
-    private Parent root;
+public class EditStage extends ChangeStage{
     EmployeeList employeeList = EmployeeList.getInstance();
 
-
-    public EditStage() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/Windows/EditWindow.fxml"));
-
-        this.setTitle("Edit");
-        this.setScene(new Scene(root));
-        //this.setResizable(false);
-        this.show();
+    public EditStage(String stageAddress, String stageName) throws IOException {
+        super(stageAddress, stageName);
+        super.setResizable(false);
     }
 }

@@ -7,15 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class HireStage extends Stage{
-    private Parent root;
+public class HireStage extends ChangeStage {
 
-    public HireStage() throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/Windows/HireWindow.fxml"));
-
-        this.setTitle("Hire");
-        this.setScene(new Scene(root));
-        //this.setResizable(false);
-        this.show();
+    public HireStage(String stageAddress, String stageName) throws IOException {
+        super(stageAddress, stageName);
+        super.setResizable(false);
     }
 }

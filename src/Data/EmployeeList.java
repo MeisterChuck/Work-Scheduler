@@ -35,4 +35,8 @@ public class EmployeeList {
         System.out.println(worker.toString());
         System.out.println(employees);
     }
+
+    public ArrayList<Worker> getWorkerList() {
+        return employees;
+    }
 }
