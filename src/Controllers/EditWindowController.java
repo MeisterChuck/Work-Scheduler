@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class EditWindowController {
-    EmployeeList employeeList = EmployeeList.getInstance();
-
     @FXML private Button editButton;
     @FXML private Button cancelButton;
 

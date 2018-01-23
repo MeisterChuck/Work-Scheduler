@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class HireWindowController {
-    EmployeeList employeeList = EmployeeList.getInstance();
+    private EmployeeList employeeList = EmployeeList.getSoleEmployeeListInstance();
 
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
@@ -27,7 +27,9 @@ public class HireWindowController {
                 lastNameTextField.getText(),
                 Double.parseDouble(salaryTextField.getText()));
 
-        employeeList.hireWorker(newHire);
+        employeeList.hire(newHire);
+        System.out.println("Hire HireWindowStage EmployeeList " + employeeList.getWorkerList());
+        System.out.println("Hire HireWindowStage workerObservableList " + employeeList.getWorkerObservableList() + "\n");
 
         Stage stage = (Stage) hireButton.getScene().getWindow();
         stage.close();

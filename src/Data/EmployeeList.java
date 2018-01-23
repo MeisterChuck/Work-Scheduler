@@ -1,42 +1,40 @@
 package Data;
 
 import Worker.Worker;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeList {
-    /*ArrayList<Worker> employees = new ArrayList<Worker>();
+    private static EmployeeList soleEmployeeListInstance = null;
 
-    public void addWorker(Worker worker) {
-        employees.add(worker);
-    }*/
-    private static EmployeeList firstInstance = null;
-    private ArrayList<Worker> employees = new ArrayList<Worker>();
+    private static ArrayList<Worker> workerList = new ArrayList<>();
+    private static ObservableList<Worker> workerObservableList = FXCollections.observableArrayList();
 
-    private EmployeeList(){
-
+    private EmployeeList() {
+        System.out.println("Creating...");
     }
 
-    public static EmployeeList getInstance() {
-        if (firstInstance == null) {
-            synchronized (EmployeeList.class) {
-                if (firstInstance == null) {
-                    firstInstance = new EmployeeList();
-                }
-            }
+    public static EmployeeList getSoleEmployeeListInstance() {
+        if(soleEmployeeListInstance == null) {
+            soleEmployeeListInstance = new EmployeeList();
         }
 
-        return firstInstance;
+        return soleEmployeeListInstance;
     }
 
-    public void hireWorker(Worker worker) {
-        employees.add(worker);
-
-        System.out.println(worker.toString());
-        System.out.println(employees);
+    public void hire(Worker worker) {
+        workerList.add(worker);
+        workerObservableList.add(worker);
     }
 
-    public ArrayList<Worker> getWorkerList() {
-        return employees;
+    public List<Worker> getWorkerList() {
+        return workerList;
+    }
+
+    public ObservableList<Worker> getWorkerObservableList() {
+        return workerObservableList;
     }
 }
