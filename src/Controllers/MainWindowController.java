@@ -1,13 +1,12 @@
 package Controllers;
 
+import Worker.Worker;
+
 import Data.EmployeeList;
 import Stages.EditStage;
 import Stages.HireStage;
 import Stages.LoginStage;
-import Worker.Employee;
-import Worker.Worker;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -27,6 +26,7 @@ public class MainWindowController implements Initializable{
     @FXML private Button hireButton;
     @FXML private Button editButton;
     @FXML private Label nameLabel;
+    @FXML private Label salaryLabel;
     @FXML private ListView<Worker> employeeListView;
 
     public void logout() throws IOException {
@@ -50,6 +50,12 @@ public class MainWindowController implements Initializable{
         stage = (Stage) editButton.getScene().getWindow();
 
         new EditStage("/Windows/EditWindow.fxml", "Edit");
+    }
+
+    public void select() throws IOException {
+        Worker selectedWorker = employeeListView.getSelectionModel().getSelectedItem();
+        nameLabel.setText(selectedWorker.getLastName() + ", " + selectedWorker.getFirstName());
+        salaryLabel.setText(selectedWorker.printSalary());
     }
 
     @Override

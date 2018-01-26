@@ -1,6 +1,5 @@
 package Stages;
 
-import Data.EmployeeList;
 import java.io.IOException;
 
 public class EditStage extends ChangeStage{
