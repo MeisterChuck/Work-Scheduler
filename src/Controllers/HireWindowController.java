@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class HireWindowController implements Initializable {
     private EmployeeList employeeList = EmployeeList.getSoleEmployeeListInstance();
+    private Worker newHire;
 
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
@@ -26,28 +27,48 @@ public class HireWindowController implements Initializable {
     @FXML private Button hireButton;
     @FXML private Button cancelButton;
 
+    private final String checkFirstNameMessage = "Please Enter a First Name";
+    private final String checkLastNameMessage = "Please Enter a Last Name";
+    private final String checkSalaryMessage = "Please Enter a Salary";
+
     public void cancel() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
-    public void hire() {
-        Worker newHire = new Employee(firstNameTextField.getText(),
-                lastNameTextField.getText(),
-                Double.parseDouble(salaryTextField.getText()),
-                managerCheckBox.isSelected(),
-                dateOfHirePicker.getValue());
+    public void hire(){
 
-        employeeList.hire(newHire);
-        System.out.println("Hire HireWindowStage EmployeeList " + employeeList.getWorkerList());
-        System.out.println("Hire HireWindowStage workerObservableList " + employeeList.getWorkerObservableList() + "\n");
+        if(checkField(firstNameTextField, checkFirstNameMessage) &&
+                checkField(lastNameTextField, checkLastNameMessage) &&
+                checkField(salaryTextField, checkSalaryMessage)) {
+             newHire = new Employee(firstNameTextField.getText(),
+                     lastNameTextField.getText(),
+                     Double.parseDouble(salaryTextField.getText()),
+                     managerCheckBox.isSelected(),
+                     dateOfHirePicker.getValue());
 
-        Stage stage = (Stage) hireButton.getScene().getWindow();
-        stage.close();
+            employeeList.hire(newHire);
+            System.out.println("Hire HireWindowStage EmployeeList " + employeeList.getWorkerList());
+            System.out.println("Hire HireWindowStage workerObservableList " + employeeList.getWorkerObservableList() + "\n");
+
+            Stage stage = (Stage) hireButton.getScene().getWindow();
+            stage.close();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dateOfHirePicker.setValue(LocalDate.now());
+    }
+
+    private Boolean checkField(TextField field, String messageToPrint) {
+        Boolean check = true;
+
+        if(field.getText() == null || field.getText().trim().isEmpty()) {
+            field.setPromptText(messageToPrint);
+            return check = false;
+        } else {
+            return check;
+        }
     }
 }

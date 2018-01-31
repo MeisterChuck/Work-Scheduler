@@ -57,6 +57,9 @@
                            <VBox.margin>
                               <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
                         <Label text="Salary">
                            <VBox.margin>
@@ -70,6 +73,41 @@
                            <VBox.margin>
                               <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                            </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Manager">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="managerLabel">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Date of Hire">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="dateOfHireLabel">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
                         </Label>
                      </children>
                   </VBox>

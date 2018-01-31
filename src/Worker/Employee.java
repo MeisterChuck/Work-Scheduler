@@ -14,6 +14,9 @@ public class Employee implements Worker {
     Employee() {
         firstName = "New";
         lastName = "Hire";
+        this.salary = 8.00;
+        this.manager = false;
+        this.hireDate = LocalDate.now();
     }
 
     public Employee(String firstName, String lastName, double salary, boolean manager, LocalDate hireDate) {
@@ -65,16 +68,13 @@ public class Employee implements Worker {
     }
 
     @Override
-    public void promotion(int promotion) {
-        this.salary += promotion;
+    public LocalDate getDateOfHire() {
+        return hireDate;
     }
 
     @Override
-    public String toString() {
-        return this.lastName + ", " + this.firstName + "\n"
-                + "Salary: " + printSalary() + "\n"
-                + "Manager: " + getManager() + "\n"
-                + "Date of Hire: " + hireDate + "\n";
+    public void promotion(int promotion) {
+        this.salary += promotion;
     }
 
     @Override
@@ -82,5 +82,15 @@ public class Employee implements Worker {
         Locale locale = new Locale("en", "US");
         NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
         return currencyFormatter.format(salary);
+    }
+
+    @Override
+    public String toString() {
+        /*return this.lastName + ", " + this.firstName + "\n"
+                + "Salary: " + printSalary() + "\n"
+                + "Manager: " + getManager() + "\n"
+                + "Date of Hire: " + hireDate + "\n";*/
+
+        return this.lastName + ", " + this.firstName;
     }
 }

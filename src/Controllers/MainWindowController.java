@@ -27,6 +27,8 @@ public class MainWindowController implements Initializable{
     @FXML private Button editButton;
     @FXML private Label nameLabel;
     @FXML private Label salaryLabel;
+    @FXML private Label managerLabel;
+    @FXML private Label dateOfHireLabel;
     @FXML private ListView<Worker> employeeListView;
 
     public void logout() throws IOException {
@@ -54,8 +56,11 @@ public class MainWindowController implements Initializable{
 
     public void select() throws IOException {
         Worker selectedWorker = employeeListView.getSelectionModel().getSelectedItem();
+
         nameLabel.setText(selectedWorker.getLastName() + ", " + selectedWorker.getFirstName());
         salaryLabel.setText(selectedWorker.printSalary());
+        managerLabel.setText(selectedWorker.getManager().toString());
+        dateOfHireLabel.setText(selectedWorker.getDateOfHire().toString());
     }
 
     @Override

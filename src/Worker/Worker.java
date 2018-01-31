@@ -1,5 +1,7 @@
 package Worker;
 
+import java.time.LocalDate;
+
 public interface Worker {
     void setFirstName(String firstName);
     void setLastName(String lastName);
@@ -9,7 +11,8 @@ public interface Worker {
     String getLastName();
     Double getSalary();
     Boolean getManager();
+    LocalDate getDateOfHire();
     void promotion(int promotion);
-    String toString();
     String printSalary();
+    String toString();
 }
