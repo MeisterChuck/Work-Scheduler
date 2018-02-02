@@ -19,12 +19,9 @@ public class Employee implements Worker {
         this.hireDate = LocalDate.now();
     }
 
-    public Employee(String firstName, String lastName, double salary, boolean manager, LocalDate hireDate) {
+    public Employee(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
-        this.manager = manager;
-        this.hireDate = hireDate;
     }
 
     @Override
@@ -43,9 +40,10 @@ public class Employee implements Worker {
     }
 
     @Override
-    public void setManager(Boolean manager) {
+    public void setManager(Boolean manager) { this.manager = manager; }
 
-    }
+    @Override
+    public void setHireDate(LocalDate hireDate) { this.hireDate = hireDate; }
 
     @Override
     public String getFirstName() {

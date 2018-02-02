@@ -7,6 +7,7 @@ public interface Worker {
     void setLastName(String lastName);
     void setSalary(double salary);
     void setManager(Boolean manager);
+    void setHireDate(LocalDate hireDate);
     String getFirstName();
     String getLastName();
     Double getSalary();

@@ -15,6 +15,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+// Attempt to rewrite the check fields for ease of read and maintainability
+
 public class HireWindowController implements Initializable {
     private EmployeeList employeeList = EmployeeList.getSoleEmployeeListInstance();
     private Worker newHire;
@@ -31,6 +33,11 @@ public class HireWindowController implements Initializable {
     private final String checkLastNameMessage = "Please Enter a Last Name";
     private final String checkSalaryMessage = "Please Enter a Salary";
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        dateOfHirePicker.setValue(LocalDate.now());
+    }
+
     public void cancel() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
@@ -38,16 +45,14 @@ public class HireWindowController implements Initializable {
 
     public void hire(){
 
-        if(checkField(firstNameTextField, checkFirstNameMessage) &&
-                checkField(lastNameTextField, checkLastNameMessage) &&
-                checkField(salaryTextField, checkSalaryMessage)) {
-             newHire = new Employee(firstNameTextField.getText(),
-                     lastNameTextField.getText(),
-                     Double.parseDouble(salaryTextField.getText()),
-                     managerCheckBox.isSelected(),
-                     dateOfHirePicker.getValue());
+        if(checkFields()) {
+            newHire = new Employee(firstNameTextField.getText(), lastNameTextField.getText());
+            newHire.setSalary(Double.parseDouble(salaryTextField.getText()));
+            newHire.setManager(managerCheckBox.isSelected());
+            newHire.setHireDate(dateOfHirePicker.getValue());
 
             employeeList.hire(newHire);
+
             System.out.println("Hire HireWindowStage EmployeeList " + employeeList.getWorkerList());
             System.out.println("Hire HireWindowStage workerObservableList " + employeeList.getWorkerObservableList() + "\n");
 
@@ -56,19 +61,22 @@ public class HireWindowController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        dateOfHirePicker.setValue(LocalDate.now());
+    private Boolean checkFields() {
+        if(checkField(firstNameTextField, checkFirstNameMessage) &&
+           checkField(lastNameTextField, checkLastNameMessage) &&
+           checkField(salaryTextField, checkSalaryMessage)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Boolean checkField(TextField field, String messageToPrint) {
-        Boolean check = true;
-
         if(field.getText() == null || field.getText().trim().isEmpty()) {
             field.setPromptText(messageToPrint);
-            return check = false;
+            return false;
         } else {
-            return check;
+            return true;
         }
     }
 }
